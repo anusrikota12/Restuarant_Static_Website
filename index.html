@@ -1,9 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#a2472e">
   <title>FlavorNest | Where Every Flavor Feels Like Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,16 +13,17 @@
 <body>
   <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
-  <!-- Login and Signup Page -->
+  <!-- Login and signup -->
   <section id="authGate" class="auth-gate">
     <div class="auth-gate-card">
-      <a class="logo auth-logo" href="#">
-        🍲 Flavor<span>Nest</span>
+      <a class="logo auth-logo" href="#" aria-label="FlavorNest home">
+        <span class="logo-mark">🍲</span> Flavor<span>Nest</span>
       </a>
+
       <p class="eyebrow">GOOD FOOD, GOOD MOOD</p>
       <h1 id="gateTitle">Welcome to FlavorNest</h1>
       <p class="muted" id="gateSubtitle">
-        Login to discover your favourite food and place orders.
+        Sign in to explore your favourite food, build your cart and place an order.
       </p>
 
       <div class="auth-tabs">
@@ -33,21 +34,19 @@
       <form id="authForm">
         <div class="form-group hidden" id="authNameGroup">
           <label for="authName">Full name</label>
-          <input id="authName" name="name" autocomplete="name"
-                 placeholder="Enter your full name">
+          <input id="authName" name="name" autocomplete="name" placeholder="Enter your full name">
         </div>
 
         <div class="form-group">
           <label for="authEmail">Email address</label>
-          <input id="authEmail" name="email" type="email"
-                 autocomplete="email" placeholder="you@example.com" required>
+          <input id="authEmail" name="email" type="email" autocomplete="email"
+                 placeholder="you@example.com" required>
         </div>
 
         <div class="form-group">
           <label for="authPassword">Password</label>
-          <input id="authPassword" name="password" type="password"
-                 minlength="6" autocomplete="current-password"
-                 placeholder="At least 6 characters" required>
+          <input id="authPassword" name="password" type="password" minlength="6"
+                 autocomplete="current-password" placeholder="At least 6 characters" required>
         </div>
 
         <button class="btn btn-primary btn-full" id="authSubmit" type="submit">
@@ -59,24 +58,25 @@
         New here?
         <button type="button" data-switch-auth="signup">Create an account</button>
       </p>
+
       <p class="small-note">
-        Project version: account information is stored in this browser.
+        Student-project version: accounts and orders are saved in this browser only.
         Do not use a real or reused password.
       </p>
     </div>
   </section>
 
-  <!-- Restaurant Website: hidden until login -->
+  <!-- Website, shown after login -->
   <div id="site" class="hidden">
-    <div class="announcement">
-      ✦ Fresh flavors, happy hearts! Order your favorites today.
-    </div>
+    <div class="announcement">✦ Fresh flavors, happy hearts! Order your favorites today.</div>
 
     <header class="site-header">
       <div class="container navbar">
-        <a class="logo" href="#home">🍲 Flavor<span>Nest</span></a>
+        <a class="logo" href="#home">
+          <span class="logo-mark">🍲</span> Flavor<span>Nest</span>
+        </a>
 
-        <button class="menu-toggle" id="menuToggle" type="button">☰</button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation">☰</button>
 
         <nav class="nav-links" id="navLinks">
           <a href="#home" class="nav-link">Home</a>
@@ -88,11 +88,9 @@
         </nav>
 
         <div class="header-actions">
-          <button class="icon-button" id="themeToggle" type="button">☾</button>
+          <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode">☾</button>
           <span class="welcome-user" id="welcomeUser"></span>
-          <button class="btn btn-outline btn-small" id="logoutBtn" type="button">
-            Log out
-          </button>
+          <button class="btn btn-outline btn-small" id="logoutBtn" type="button">Log out</button>
           <button class="btn btn-primary btn-small" id="cartOpen" type="button">
             🛍 Cart <span class="cart-count" id="cartCount">0</span>
           </button>
@@ -107,16 +105,14 @@
           <p class="eyebrow">★ GOOD FOOD, GOOD MOOD</p>
           <h1>Where Every Flavor<br><span>Feels Like Home.</span></h1>
           <p>
-            From comforting classics to exciting new tastes, discover
-            dishes made with love and served with warmth.
+            From comforting classics to exciting new tastes, discover dishes made
+            with love and served with warmth.
           </p>
           <div class="hero-buttons">
-            <a class="btn btn-primary" href="#menu">Explore Our Menu →</a>
+            <a class="btn btn-primary" href="#menu">Explore Our Menu <span>→</span></a>
             <a class="btn btn-light" href="#reservations">Book a Table</a>
           </div>
-          <p class="hero-rating">
-            <span class="stars">★★★★★</span> Loved by food lovers everywhere
-          </p>
+          <p class="hero-rating"><span class="stars">★★★★★</span> Loved by food lovers everywhere</p>
         </div>
       </section>
 
@@ -158,10 +154,11 @@
           <div class="menu-toolbar">
             <label class="search-box">
               ⌕
-              <input id="menuSearch" type="search" placeholder="Search dishes...">
+              <input id="menuSearch" type="search" placeholder="Search dishes..." aria-label="Search dishes">
             </label>
+
             <div class="menu-options">
-              <select id="sortMenu">
+              <select id="sortMenu" aria-label="Sort dishes">
                 <option value="popular">Sort: Recommended</option>
                 <option value="low">Price: Low to High</option>
                 <option value="high">Price: High to Low</option>
@@ -174,14 +171,14 @@
           </div>
 
           <div class="category-filters" id="categoryFilters">
-            <button class="filter-btn active" data-category="All">All</button>
-            <button class="filter-btn" data-category="Breakfast">Breakfast</button>
-            <button class="filter-btn" data-category="Starters">Starters</button>
-            <button class="filter-btn" data-category="Indian">Indian</button>
-            <button class="filter-btn" data-category="Italian">Italian</button>
-            <button class="filter-btn" data-category="Fast Food">Fast Food</button>
-            <button class="filter-btn" data-category="Desserts">Desserts</button>
-            <button class="filter-btn" data-category="Drinks">Drinks</button>
+            <button class="filter-btn active" data-category="All" type="button">All</button>
+            <button class="filter-btn" data-category="Breakfast" type="button">Breakfast</button>
+            <button class="filter-btn" data-category="Starters" type="button">Starters</button>
+            <button class="filter-btn" data-category="Indian" type="button">Indian</button>
+            <button class="filter-btn" data-category="Italian" type="button">Italian</button>
+            <button class="filter-btn" data-category="Fast Food" type="button">Fast Food</button>
+            <button class="filter-btn" data-category="Desserts" type="button">Desserts</button>
+            <button class="filter-btn" data-category="Drinks" type="button">Drinks</button>
           </div>
 
           <div class="menu-grid" id="menuGrid"></div>
@@ -212,13 +209,14 @@
         <div class="container about-grid">
           <img class="about-image"
                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=85"
-               alt="Restaurant dining space" loading="lazy">
+               alt="Warm restaurant dining space" loading="lazy">
           <div>
             <p class="eyebrow">OUR STORY</p>
             <h2>A place for <span>every craving</span></h2>
             <p>
-              FlavorNest brings together familiar comfort food and exciting
-              flavours in one welcoming place.
+              FlavorNest brings together familiar comfort food and exciting flavours
+              in one welcoming place. Whether you are sharing a meal or grabbing a
+              quick bite, we want every visit to feel special.
             </p>
             <ul class="check-list">
               <li>✓ A varied menu for different tastes</li>
@@ -230,18 +228,19 @@
         </div>
       </section>
 
-      <!-- Reservation -->
+      <!-- Reservations -->
       <section class="section-pad reservation-section" id="reservations">
         <div class="container reservation-grid">
           <div>
             <p class="eyebrow">SAVE YOUR SEAT</p>
             <h2>Make a <span>Reservation</span></h2>
             <p>
-              Plan a meal with friends or family. Submit your preferred
-              date and time to save a reservation.
+              Plan a meal with friends, family or someone special. Submit your
+              preferred date and time to save a reservation in this browser.
             </p>
             <p class="small-note">
-              Reservations are stored in this browser and are not sent to a real restaurant.
+              Reservation requests are stored locally for this project; they are
+              not sent to a real restaurant.
             </p>
           </div>
 
@@ -254,8 +253,7 @@
               </div>
               <div class="form-group">
                 <label for="resPhone">Phone number</label>
-                <input id="resPhone" name="phone" type="tel"
-                       pattern="[0-9+() -]{7,20}" required>
+                <input id="resPhone" name="phone" type="tel" pattern="[0-9+() -]{7,20}" required>
               </div>
             </div>
             <div class="form-row">
@@ -271,14 +269,11 @@
             <div class="form-group">
               <label for="resGuests">Number of guests</label>
               <select id="resGuests" name="guests">
-                <option>1</option><option selected>2</option>
-                <option>3</option><option>4</option><option>5</option>
-                <option>6</option><option>7</option><option>8</option>
+                <option>1</option><option selected>2</option><option>3</option><option>4</option>
+                <option>5</option><option>6</option><option>7</option><option>8</option>
               </select>
             </div>
-            <button class="btn btn-primary btn-full" type="submit">
-              Request Reservation
-            </button>
+            <button class="btn btn-primary btn-full" type="submit">Request Reservation</button>
           </form>
         </div>
       </section>
@@ -297,17 +292,16 @@
               <h3>Leave a Review</h3>
               <div class="form-group">
                 <label for="reviewer">Your Name</label>
-                <input id="reviewer" name="reviewer"
-                       placeholder="Enter your name" required>
+                <input id="reviewer" name="reviewer" placeholder="Enter your name" required>
               </div>
               <div class="form-group">
                 <label>Your Rating</label>
-                <div class="star-rating" id="starRating">
-                  <button type="button" data-rating="1">★</button>
-                  <button type="button" data-rating="2">★</button>
-                  <button type="button" data-rating="3">★</button>
-                  <button type="button" data-rating="4">★</button>
-                  <button type="button" data-rating="5">★</button>
+                <div class="star-rating" id="starRating" role="group" aria-label="Choose a rating">
+                  <button type="button" data-rating="1" aria-label="1 star">★</button>
+                  <button type="button" data-rating="2" aria-label="2 stars">★</button>
+                  <button type="button" data-rating="3" aria-label="3 stars">★</button>
+                  <button type="button" data-rating="4" aria-label="4 stars">★</button>
+                  <button type="button" data-rating="5" aria-label="5 stars">★</button>
                 </div>
               </div>
               <div class="form-group">
@@ -315,18 +309,13 @@
                 <textarea id="review" name="review" rows="5"
                           placeholder="Tell us about your experience..." required></textarea>
               </div>
-              <button class="btn btn-primary btn-full" type="submit">
-                ➤ Submit Feedback
-              </button>
+              <button class="btn btn-primary btn-full" type="submit">➤ Submit Feedback</button>
             </form>
 
             <div class="feedback-reviews">
               <div class="reviews-heading">
-                <div>
-                  <p class="eyebrow">CUSTOMER STORIES</p>
-                  <h3>What People Say</h3>
-                </div>
-                <span>♧</span>
+                <div><p class="eyebrow">CUSTOMER STORIES</p><h3>What People Say</h3></div>
+                <span aria-hidden="true">♧</span>
               </div>
               <div id="reviewsList"></div>
             </div>
@@ -340,7 +329,7 @@
           <div class="section-heading">
             <p class="eyebrow">YOUR ACCOUNT</p>
             <h2>Order <span>History</span></h2>
-            <p>Review orders placed while signed in on this browser.</p>
+            <p>Review orders placed from this browser while signed in.</p>
           </div>
           <div id="orderHistoryList" class="history-list"></div>
         </div>
@@ -367,7 +356,7 @@
         <div>
           <h4>Contact</h4>
           <p>Made with care for food lovers.</p>
-          <p class="small-note">Student project website</p>
+          <p class="small-note">Demo restaurant website</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -379,15 +368,14 @@
     </footer>
   </div>
 
-  <!-- Cart Drawer -->
+  <!-- Cart drawer -->
   <div class="overlay hidden" id="overlay"></div>
-  <aside class="cart-drawer" id="cartDrawer">
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
     <div class="cart-header">
       <div><p class="eyebrow">YOUR SELECTION</p><h2>Your Cart</h2></div>
-      <button class="icon-button" id="cartClose" type="button">✕</button>
+      <button class="icon-button" id="cartClose" type="button" aria-label="Close cart">✕</button>
     </div>
     <div id="cartItems" class="cart-items"></div>
-
     <div class="cart-coupon">
       <label for="couponInput">Coupon code</label>
       <div class="coupon-input-row">
@@ -396,25 +384,21 @@
       </div>
       <p id="couponMessage" class="small-note"></p>
     </div>
-
     <div class="cart-summary">
       <div><span>Subtotal</span><strong id="cartSubtotal">₹0.00</strong></div>
       <div><span>Discount</span><strong id="cartDiscount">−₹0.00</strong></div>
       <div><span>Estimated tax (5%)</span><strong id="cartTax">₹0.00</strong></div>
       <div class="cart-total"><span>Total</span><strong id="cartTotal">₹0.00</strong></div>
     </div>
-    <button class="btn btn-primary btn-full" id="checkoutBtn" type="button">
-      Continue to Checkout
-    </button>
-    <p class="small-note">PhonePe/UPI payments require real payment integration.</p>
+    <button class="btn btn-primary btn-full" id="checkoutBtn" type="button">Continue to Checkout</button>
+    <p class="small-note">Payment is not confirmed by this website unless your payment provider confirms it.</p>
   </aside>
 
-  <!-- Checkout -->
-  <section class="modal hidden" id="checkoutModal">
-    <button class="icon-button modal-close" id="checkoutClose" type="button">✕</button>
+  <!-- Checkout modal -->
+  <section class="modal hidden" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <button class="icon-button modal-close" id="checkoutClose" type="button" aria-label="Close checkout">✕</button>
     <p class="eyebrow">ALMOST THERE</p>
-    <h2>Complete Your Order</h2>
-
+    <h2 id="checkoutTitle">Complete Your Order</h2>
     <form id="checkoutForm">
       <div class="form-group">
         <label for="deliveryName">Full name</label>
@@ -426,29 +410,22 @@
       </div>
       <div class="form-group">
         <label for="deliveryAddress">Delivery address</label>
-        <textarea id="deliveryAddress" rows="3" required
-                  placeholder="House number, street, area, city"></textarea>
+        <textarea id="deliveryAddress" rows="3" required placeholder="House number, street, area, city"></textarea>
       </div>
       <div class="form-group">
         <label for="paymentMethod">Payment method</label>
         <select id="paymentMethod" required>
-          <option value="cod">Cash on Delivery</option>
+          <option value="cod">Cash on Delivery (pay when delivered)</option>
           <option value="upi">PhonePe / UPI</option>
         </select>
       </div>
-      <div class="payment-note" id="paymentNote">
-        Pay in cash when your order is delivered.
-      </div>
-      <div class="checkout-total">
-        Order total <strong id="checkoutTotal">₹0.00</strong>
-      </div>
-      <button class="btn btn-primary btn-full" id="placeOrderBtn" type="submit">
-        Place Order
-      </button>
+      <div class="payment-note" id="paymentNote">Pay in cash when your order is delivered.</div>
+      <div class="checkout-total">Order total <strong id="checkoutTotal">₹0.00</strong></div>
+      <button class="btn btn-primary btn-full" id="placeOrderBtn" type="submit">Place Order</button>
     </form>
     <p class="small-note">
-      Cash-on-delivery orders are saved locally. UPI payments cannot be
-      verified without a payment gateway and server.
+      This is a front-end project. Cash-on-delivery orders are recorded locally.
+      UPI payment status cannot be verified without a payment gateway and server integration.
     </p>
   </section>
 
