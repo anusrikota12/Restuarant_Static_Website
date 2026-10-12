@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlavorNest | Where Every Flavor Feels Like Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Login and Signup Page -->
+  <section id="authGate" class="auth-gate">
+    <div class="auth-gate-card">
+      <a class="logo auth-logo" href="#">
+        🍲 Flavor<span>Nest</span>
+      </a>
+      <p class="eyebrow">GOOD FOOD, GOOD MOOD</p>
+      <h1 id="gateTitle">Welcome to FlavorNest</h1>
+      <p class="muted" id="gateSubtitle">
+        Login to discover your favourite food and place orders.
+      </p>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" type="button" data-auth-mode="login">Login</button>
+        <button class="auth-tab" type="button" data-auth-mode="signup">Sign Up</button>
+      </div>
+
+      <form id="authForm">
+        <div class="form-group hidden" id="authNameGroup">
+          <label for="authName">Full name</label>
+          <input id="authName" name="name" autocomplete="name"
+                 placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+          <label for="authEmail">Email address</label>
+          <input id="authEmail" name="email" type="email"
+                 autocomplete="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="authPassword">Password</label>
+          <input id="authPassword" name="password" type="password"
+                 minlength="6" autocomplete="current-password"
+                 placeholder="At least 6 characters" required>
+        </div>
+
+        <button class="btn btn-primary btn-full" id="authSubmit" type="submit">
+          Login and Explore
+        </button>
+      </form>
+
+      <p class="auth-switch" id="authSwitchText">
+        New here?
+        <button type="button" data-switch-auth="signup">Create an account</button>
+      </p>
+      <p class="small-note">
+        Project version: account information is stored in this browser.
+        Do not use a real or reused password.
+      </p>
+    </div>
+  </section>
+
+  <!-- Restaurant Website: hidden until login -->
+  <div id="site" class="hidden">
+    <div class="announcement">
+      ✦ Fresh flavors, happy hearts! Order your favorites today.
+    </div>
+
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="logo" href="#home">🍲 Flavor<span>Nest</span></a>
+
+        <button class="menu-toggle" id="menuToggle" type="button">☰</button>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#menu" class="nav-link">Our Menu</a>
+          <a href="#about" class="nav-link">About Us</a>
+          <a href="#reservations" class="nav-link">Reservations</a>
+          <a href="#feedback" class="nav-link">Feedback</a>
+          <a href="#orderHistory" class="nav-link">Order History</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-button" id="themeToggle" type="button">☾</button>
+          <span class="welcome-user" id="welcomeUser"></span>
+          <button class="btn btn-outline btn-small" id="logoutBtn" type="button">
+            Log out
+          </button>
+          <button class="btn btn-primary btn-small" id="cartOpen" type="button">
+            🛍 Cart <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Home -->
+      <section class="hero" id="home">
+        <div class="container hero-content">
+          <p class="eyebrow">★ GOOD FOOD, GOOD MOOD</p>
+          <h1>Where Every Flavor<br><span>Feels Like Home.</span></h1>
+          <p>
+            From comforting classics to exciting new tastes, discover
+            dishes made with love and served with warmth.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#menu">Explore Our Menu →</a>
+            <a class="btn btn-light" href="#reservations">Book a Table</a>
+          </div>
+          <p class="hero-rating">
+            <span class="stars">★★★★★</span> Loved by food lovers everywhere
+          </p>
+        </div>
+      </section>
+
+      <!-- Benefits -->
+      <section class="benefits section-pad">
+        <div class="container benefits-grid">
+          <article>
+            <span class="benefit-icon">🥗</span>
+            <h3>Fresh Ingredients</h3>
+            <p>Freshly prepared meals with carefully selected ingredients.</p>
+          </article>
+          <article>
+            <span class="benefit-icon">👨‍🍳</span>
+            <h3>Made with Care</h3>
+            <p>Comforting recipes and flavours for every craving.</p>
+          </article>
+          <article>
+            <span class="benefit-icon">🚚</span>
+            <h3>Easy Ordering</h3>
+            <p>Choose your favourites and keep track of your orders.</p>
+          </article>
+          <article>
+            <span class="benefit-icon">💛</span>
+            <h3>Made for You</h3>
+            <p>A welcoming food experience from start to finish.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Menu -->
+      <section class="section-pad" id="menu">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">MADE FRESH, JUST FOR YOU</p>
+            <h2>Find Your <span>Favourite Food</span></h2>
+            <p>From a quick bite to a comforting meal, there is something for every craving.</p>
+          </div>
+
+          <div class="menu-toolbar">
+            <label class="search-box">
+              ⌕
+              <input id="menuSearch" type="search" placeholder="Search dishes...">
+            </label>
+            <div class="menu-options">
+              <select id="sortMenu">
+                <option value="popular">Sort: Recommended</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+              </select>
+              <label class="veg-toggle">
+                <input id="vegOnly" type="checkbox"> Vegetarian only
+              </label>
+            </div>
+          </div>
+
+          <div class="category-filters" id="categoryFilters">
+            <button class="filter-btn active" data-category="All">All</button>
+            <button class="filter-btn" data-category="Breakfast">Breakfast</button>
+            <button class="filter-btn" data-category="Starters">Starters</button>
+            <button class="filter-btn" data-category="Indian">Indian</button>
+            <button class="filter-btn" data-category="Italian">Italian</button>
+            <button class="filter-btn" data-category="Fast Food">Fast Food</button>
+            <button class="filter-btn" data-category="Desserts">Desserts</button>
+            <button class="filter-btn" data-category="Drinks">Drinks</button>
+          </div>
+
+          <div class="menu-grid" id="menuGrid"></div>
+          <p class="empty-state hidden" id="emptyMenu">
+            No dishes match your search. Try another food or category.
+          </p>
+        </div>
+      </section>
+
+      <!-- Coupon -->
+      <section class="promo-section">
+        <div class="container promo-content">
+          <div>
+            <p class="eyebrow light-eyebrow">A LITTLE TREAT FOR YOU</p>
+            <h2>Good food tastes even better with a deal.</h2>
+            <p>Use this coupon in your cart for 10% off your food subtotal.</p>
+          </div>
+          <div class="coupon-card">
+            <span>YOUR COUPON</span>
+            <strong>FLAVOR10</strong>
+            <button class="btn btn-light" id="copyCoupon" type="button">Copy code</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="section-pad" id="about">
+        <div class="container about-grid">
+          <img class="about-image"
+               src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=85"
+               alt="Restaurant dining space" loading="lazy">
+          <div>
+            <p class="eyebrow">OUR STORY</p>
+            <h2>A place for <span>every craving</span></h2>
+            <p>
+              FlavorNest brings together familiar comfort food and exciting
+              flavours in one welcoming place.
+            </p>
+            <ul class="check-list">
+              <li>✓ A varied menu for different tastes</li>
+              <li>✓ Simple online ordering experience</li>
+              <li>✓ Order history available in your account</li>
+            </ul>
+            <a class="btn btn-primary" href="#menu">Explore the menu</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reservation -->
+      <section class="section-pad reservation-section" id="reservations">
+        <div class="container reservation-grid">
+          <div>
+            <p class="eyebrow">SAVE YOUR SEAT</p>
+            <h2>Make a <span>Reservation</span></h2>
+            <p>
+              Plan a meal with friends or family. Submit your preferred
+              date and time to save a reservation.
+            </p>
+            <p class="small-note">
+              Reservations are stored in this browser and are not sent to a real restaurant.
+            </p>
+          </div>
+
+          <form class="panel form-panel" id="reservationForm">
+            <h3>Book a Table</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="resName">Your name</label>
+                <input id="resName" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="resPhone">Phone number</label>
+                <input id="resPhone" name="phone" type="tel"
+                       pattern="[0-9+() -]{7,20}" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="resDate">Date</label>
+                <input id="resDate" name="date" type="date" required>
+              </div>
+              <div class="form-group">
+                <label for="resTime">Time</label>
+                <input id="resTime" name="time" type="time" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="resGuests">Number of guests</label>
+              <select id="resGuests" name="guests">
+                <option>1</option><option selected>2</option>
+                <option>3</option><option>4</option><option>5</option>
+                <option>6</option><option>7</option><option>8</option>
+              </select>
+            </div>
+            <button class="btn btn-primary btn-full" type="submit">
+              Request Reservation
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Feedback -->
+      <section class="section-pad" id="feedback">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">YOUR VOICE MATTERS</p>
+            <h2>Share Your <span>Experience</span></h2>
+            <p>Tell us what you enjoyed and help us make your next visit even better.</p>
+          </div>
+
+          <div class="feedback-grid">
+            <form id="feedbackForm" class="panel form-panel">
+              <h3>Leave a Review</h3>
+              <div class="form-group">
+                <label for="reviewer">Your Name</label>
+                <input id="reviewer" name="reviewer"
+                       placeholder="Enter your name" required>
+              </div>
+              <div class="form-group">
+                <label>Your Rating</label>
+                <div class="star-rating" id="starRating">
+                  <button type="button" data-rating="1">★</button>
+                  <button type="button" data-rating="2">★</button>
+                  <button type="button" data-rating="3">★</button>
+                  <button type="button" data-rating="4">★</button>
+                  <button type="button" data-rating="5">★</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="review">Your Feedback</label>
+                <textarea id="review" name="review" rows="5"
+                          placeholder="Tell us about your experience..." required></textarea>
+              </div>
+              <button class="btn btn-primary btn-full" type="submit">
+                ➤ Submit Feedback
+              </button>
+            </form>
+
+            <div class="feedback-reviews">
+              <div class="reviews-heading">
+                <div>
+                  <p class="eyebrow">CUSTOMER STORIES</p>
+                  <h3>What People Say</h3>
+                </div>
+                <span>♧</span>
+              </div>
+              <div id="reviewsList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Order History -->
+      <section class="section-pad history-section" id="orderHistory">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">YOUR ACCOUNT</p>
+            <h2>Order <span>History</span></h2>
+            <p>Review orders placed while signed in on this browser.</p>
+          </div>
+          <div id="orderHistoryList" class="history-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="logo footer-logo" href="#home">🍲 Flavor<span>Nest</span></a>
+          <p>Where every flavor feels like home.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="#menu">Our Menu</a>
+          <a href="#about">About Us</a>
+          <a href="#reservations">Reservations</a>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <a href="#orderHistory">Order History</a>
+          <a href="#feedback">Customer Feedback</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>Made with care for food lovers.</p>
+          <p class="small-note">Student project website</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <span>© <span id="year"></span> FlavorNest</span>
+          <span>Made with ♥ for food lovers</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="overlay hidden" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <div><p class="eyebrow">YOUR SELECTION</p><h2>Your Cart</h2></div>
+      <button class="icon-button" id="cartClose" type="button">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+
+    <div class="cart-coupon">
+      <label for="couponInput">Coupon code</label>
+      <div class="coupon-input-row">
+        <input id="couponInput" placeholder="Enter FLAVOR10">
+        <button id="applyCoupon" type="button">Apply</button>
+      </div>
+      <p id="couponMessage" class="small-note"></p>
+    </div>
+
+    <div class="cart-summary">
+      <div><span>Subtotal</span><strong id="cartSubtotal">₹0.00</strong></div>
+      <div><span>Discount</span><strong id="cartDiscount">−₹0.00</strong></div>
+      <div><span>Estimated tax (5%)</span><strong id="cartTax">₹0.00</strong></div>
+      <div class="cart-total"><span>Total</span><strong id="cartTotal">₹0.00</strong></div>
+    </div>
+    <button class="btn btn-primary btn-full" id="checkoutBtn" type="button">
+      Continue to Checkout
+    </button>
+    <p class="small-note">PhonePe/UPI payments require real payment integration.</p>
+  </aside>
+
+  <!-- Checkout -->
+  <section class="modal hidden" id="checkoutModal">
+    <button class="icon-button modal-close" id="checkoutClose" type="button">✕</button>
+    <p class="eyebrow">ALMOST THERE</p>
+    <h2>Complete Your Order</h2>
+
+    <form id="checkoutForm">
+      <div class="form-group">
+        <label for="deliveryName">Full name</label>
+        <input id="deliveryName" required>
+      </div>
+      <div class="form-group">
+        <label for="deliveryPhone">Phone number</label>
+        <input id="deliveryPhone" type="tel" pattern="[0-9+() -]{7,20}" required>
+      </div>
+      <div class="form-group">
+        <label for="deliveryAddress">Delivery address</label>
+        <textarea id="deliveryAddress" rows="3" required
+                  placeholder="House number, street, area, city"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="paymentMethod">Payment method</label>
+        <select id="paymentMethod" required>
+          <option value="cod">Cash on Delivery</option>
+          <option value="upi">PhonePe / UPI</option>
+        </select>
+      </div>
+      <div class="payment-note" id="paymentNote">
+        Pay in cash when your order is delivered.
+      </div>
+      <div class="checkout-total">
+        Order total <strong id="checkoutTotal">₹0.00</strong>
+      </div>
+      <button class="btn btn-primary btn-full" id="placeOrderBtn" type="submit">
+        Place Order
+      </button>
+    </form>
+    <p class="small-note">
+      Cash-on-delivery orders are saved locally. UPI payments cannot be
+      verified without a payment gateway and server.
+    </p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
